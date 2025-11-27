@@ -1,0 +1,32 @@
+<section class="pokemon-list">
+  <h1>Pokémon disponibles</h1>
+
+  <div class="filters">
+    <label for="type-select">Filtrer par type</label>
+    <select id="type-select" [value]="selectedType()" (change)="onTypeChange($any($event.target).value)">
+      <option value="">Tous</option>
+      <option *ngFor="let type of types()" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+  </div>
+
+  <ul>
+    <li *ngFor="let pokemon of pokemons()">
+      <img [src]="spriteUrl(pokemon)" [alt]="pokemon.name" />
+      <span>{{ pokemon.name }}</span>
+    </li>
+  </ul>
+
+  <button
+    type="button"
+    (click)="loadMore()"
+    [disabled]="isLoading() || !nextUrl()"
+  >
+    Charger plus
+  </button>
+
+  <p *ngIf="!isLoading() && !nextUrl() && !selectedType()">
+    Plus de Pokémon à charger.
+  </p>
+</section>
