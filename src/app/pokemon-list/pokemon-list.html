@@ -1,5 +1,12 @@
 <section class="pokemon-list">
-  <h1>Pokémon disponibles</h1>
+  <h1>Pokédex en ligne</h1>
+
+  <div class="pokedex-top" aria-hidden="true">
+    <span class="lens primary"></span>
+    <span class="lens secondary"></span>
+    <span class="lens secondary"></span>
+    <span class="lens secondary"></span>
+  </div>
 
   <div class="filters">
     <label for="type-select">Filtrer par type</label>
@@ -11,12 +18,14 @@
     </select>
   </div>
 
-  <ul>
-    <li *ngFor="let pokemon of pokemons()">
-      <img [src]="spriteUrl(pokemon)" [alt]="pokemon.name" />
-      <span>{{ pokemon.name }}</span>
-    </li>
-  </ul>
+  <div class="grid-shell">
+    <ul>
+      <li *ngFor="let pokemon of pokemons()">
+        <img [src]="spriteUrl(pokemon)" [alt]="pokemon.name" />
+        <span>{{ pokemon.name }}</span>
+      </li>
+    </ul>
+  </div>
 
   <button
     type="button"
